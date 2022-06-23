@@ -1,0 +1,88 @@
+pipeline{
+    agent: any
+    triggers {
+        pollSCM 'H/2 * * * *'
+        }
+
+    stages{
+        stage("DEVELOPMENT"){
+            steps{
+                echo "Executing the development stage"
+                
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
+        }
+        
+        stage("STAGING"){
+            steps{
+                echo "Executing the staging phase"
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
+        }
+        
+        stage("TESTING"){
+            steps{
+                echo "Executing the testing stage"
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
+        }
+        
+        stage("PRODUCTION"){
+            steps{
+                echo "Executing the production stage"
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
+        }
+    }
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
+    }
+}
